@@ -32,14 +32,14 @@ class Parchis:
                 tablero += self.nomJ1 + "\tI"
                 for pos1 in range (1, Parchis.TAM_TABLERO):
                     if self.fichaJ1 == pos1:
-                        tablero += "O"
+                        tablero += "O\t"
                     else:
                         tablero += "\t"
             elif num == 2:
                 tablero += self.nomJ2 + "\tI"
                 for pos2 in range (1, Parchis.TAM_TABLERO):                 
                     if self.fichaJ2 == pos2:
-                        tablero += "O"
+                        tablero += "O\t"
                     else:
                         tablero += "\t"
             tablero += "\tF\n"
@@ -47,7 +47,22 @@ class Parchis:
     
 
     def avanzaPosiciones(self, jugador: int):
+        #Parchis.tiraDados()
         if jugador == 1:
-            self.fichaJ1 == 1
+            self.fichaJ1 += Parchis.dado1+Parchis.dado2
+            if self.fichaJ1 > Parchis.TAM_TABLERO:
+                self.fichaJ1 = Parchis.TAM_TABLERO - (self.fichaJ1-Parchis.TAM_TABLERO)
         elif jugador == 2:
-            self.fichaJ2 == 2
+            self.fichaJ2 += Parchis.dado1+Parchis.dado2
+            if self.fichaJ2 > Parchis.TAM_TABLERO:
+                self.fichaJ2 = Parchis.TAM_TABLERO - (self.fichaJ2-Parchis.TAM_TABLERO)
+
+
+    def estadoCarrera(self):
+        ganador = "Va ganando "
+        if self.fichaJ1 > self.fichaJ2:
+            ganador += self.nomJ1
+        elif self.fichaJ2 > self.fichaJ1:
+            ganador += self.nomJ2
+        else: ganador = "Vais empatados"
+        return ganador
