@@ -11,7 +11,6 @@ class Parchis:
         self.nomJ1 = nomJ1
         self.nomJ2 = nomJ2
 
-    
     def tiraDados():
         Parchis.dado1=random.randint(1,6)
         Parchis.dado2=random.randint(1,6)
@@ -60,9 +59,21 @@ class Parchis:
 
     def estadoCarrera(self):
         ganador = "Va ganando "
+
         if self.fichaJ1 > self.fichaJ2:
-            ganador += self.nomJ1
+           ganador += self.nomJ1
         elif self.fichaJ2 > self.fichaJ1:
-            ganador += self.nomJ2
+           ganador += self.nomJ2
         else: ganador = "Vais empatados"
+
+        return ganador
+    
+    def esGanador(self):
+        ganador = ""
+
+        if self.fichaJ1 == Parchis.TAM_TABLERO:
+           ganador = self.nomJ1
+        elif self.fichaJ2 == Parchis.TAM_TABLERO:
+           ganador = self.nomJ2
+
         return ganador

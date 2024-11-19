@@ -1,5 +1,12 @@
 from Clases.Parchis import *
 
+def test_estadoCarrera0():
+    prueba = Parchis("Pablo", "Sara")
+    prueba.fichaJ1 = 0
+    prueba.fichaJ2 = 0
+    assert prueba.estadoCarrera() == "Vais empatados"
+
+
 def test_estadoCarrera1():
     prueba = Parchis("Pablo", "Sara")
     prueba.fichaJ1 = 2
@@ -18,3 +25,9 @@ def test_estadoCarrera3():
     prueba.fichaJ1 = 0
     prueba.fichaJ2 = 0
     assert prueba.estadoCarrera() == "Vais empatados"
+
+def test_estadoCarrera4():
+    prueba = Parchis("Pablo", "Sara")
+    prueba.fichaJ1 = 20
+    prueba.fichaJ2 = 0
+    assert prueba.estadoCarrera() == "Va ganando Pablo"
